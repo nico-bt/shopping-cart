@@ -41,6 +41,10 @@
   }
 }
 
+.product-category {
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
 .products h3 {
   margin: 0;
 }
