@@ -1,3 +1,4 @@
+import { AddToCartIcon } from "../Icons"
 import "./products.css"
 
 function Products({ products }) {
@@ -10,8 +11,11 @@ function Products({ products }) {
             <div>
               <strong>{product.title}</strong>
             </div>
+            <div>${product.price.toLocaleString()}</div>
             <div>
-              <button>Add to Cart</button>
+              <button>
+                Add to Cart <AddToCartIcon />{" "}
+              </button>
             </div>
           </li>
         ))}
