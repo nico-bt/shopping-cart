@@ -10,14 +10,20 @@ function App() {
   const [products, setProducts] = useState(initialProducts)
   const { maxProductsPrice, minProductsPrice, allCategories } = useProductsData(initialProducts)
 
-  const { filterProducts, filter, setFilter } = useFilter()
+  const { filterProducts, filter, setFilter } = useFilter(maxProductsPrice)
   const filteredProducts = filterProducts(products, filter)
 
   return (
     <>
       <Header />
 
-      <Filter filter={filter} setFilter={setFilter} allCategories={allCategories} />
+      <Filter
+        filter={filter}
+        setFilter={setFilter}
+        allCategories={allCategories}
+        maxPrice={maxProductsPrice}
+        minPrice={minProductsPrice}
+      />
 
       {filteredProducts && <Products products={filteredProducts} />}
     </>

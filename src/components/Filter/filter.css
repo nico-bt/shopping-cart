@@ -1,0 +1,21 @@
+.filters-container {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.filters-btns-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.filters-container select {
+  font-size: 1rem;
+  text-transform: capitalize;
+  line-height: 1.6;
+  padding: 6px;
+}

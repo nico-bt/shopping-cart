@@ -1,7 +1,11 @@
 import { useState } from "react"
 
-function useFilter() {
-  const [filter, setFilter] = useState({ category: "all", sortByPrice: "default" }) //default - lowest - highest (by price)
+function useFilter(maxPrice) {
+  const [filter, setFilter] = useState({
+    category: "all",
+    sortByPrice: "default",
+    maxPrice: maxPrice,
+  })
 
   const filterProducts = (products, filter) => {
     let filteredProducts
@@ -9,9 +13,11 @@ function useFilter() {
     // By Category
     //-----------------------------------------------------------
     if (filter.category === "all") {
-      filteredProducts = [...products]
+      filteredProducts = products.filter((item) => item.price <= filter.maxPrice)
     } else {
-      filteredProducts = products.filter((item) => item.category === filter.category)
+      filteredProducts = products.filter(
+        (item) => item.category === filter.category && item.price <= filter.maxPrice
+      )
     }
 
     // By Price

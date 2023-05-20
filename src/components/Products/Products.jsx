@@ -23,7 +23,7 @@ function Products({ products }) {
           ))}
         </ul>
       ) : (
-        <div className="product-no-items">No Items </div>
+        <div className="product-no-items">No Items with that criteria</div>
       )}
     </main>
   )
