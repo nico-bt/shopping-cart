@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { products as initialProducts } from "./mocks/products.json"
 import Products from "./components/Products/Products"
 import Header from "./components/Header/Header"
 import useFilter from "./hooks/useFilter"
 import useProductsData from "./hooks/useProductsData"
 import Filter from "./components/Filter/Filter"
+import { Cart } from "./components/Cart/Cart"
 
 function App() {
   const [products, setProducts] = useState(initialProducts)
@@ -16,6 +17,8 @@ function App() {
   return (
     <>
       <Header />
+
+      <Cart />
 
       <Filter
         filter={filter}
