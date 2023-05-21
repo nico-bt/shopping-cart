@@ -25,6 +25,8 @@ export function Cart() {
   const cartCheckboxId = useId()
   const { cart, clearCart, addToCart, removeItem } = useCartContext()
 
+  const [showTooltip, setShowToolTip] = useState(false)
+
   return (
     <>
       <label className="cart-button" htmlFor={cartCheckboxId}>
@@ -34,7 +36,7 @@ export function Cart() {
 
       <aside className="cart">
         <ul>
-          {cart.length > 0 ? (
+          {cart?.length > 0 ? (
             cart.map((product) => (
               <CartItem
                 key={product.id}
@@ -48,9 +50,21 @@ export function Cart() {
           )}
         </ul>
 
-        <button onClick={clearCart}>
-          <ClearCartIcon />
-        </button>
+        {cart?.length > 0 && (
+          <>
+            <button
+              onClick={() => {
+                clearCart()
+                setShowToolTip(false)
+              }}
+              onMouseEnter={() => setShowToolTip(true)}
+              onMouseLeave={() => setShowToolTip(false)}
+            >
+              <ClearCartIcon />
+              {showTooltip && <span className="toolTip-discardAll">Discard all items</span>}
+            </button>
+          </>
+        )}
       </aside>
     </>
   )

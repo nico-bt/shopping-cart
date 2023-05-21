@@ -13,6 +13,7 @@ export const CartContextProvider = ({ children }) => {
     setCart((prevState) => {
       const productInCartIndex = prevState.findIndex((cartItem) => cartItem.id === item.id)
 
+      // Si el producto ya está en el cart, le sumamos +1
       if (productInCartIndex >= 0) {
         const newState = prevState.map((cartItem) => {
           if (cartItem.id === item.id) {
@@ -23,6 +24,7 @@ export const CartContextProvider = ({ children }) => {
         })
         return newState
       } else {
+        // Si no está en el cart
         return [...prevState, { ...item, quantity: 1 }]
       }
     })
